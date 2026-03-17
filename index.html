@@ -594,20 +594,120 @@
   .delay-4 { animation-delay: 0.42s; }
 
   /* ── RESPONSIVE ── */
+  /* ── HAMBURGER BUTTON ── */
+  .nav-right {
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .hamburger {
+    display: none;
+    flex-direction: column; justify-content: center; align-items: center;
+    gap: 5px; width: 36px; height: 36px;
+    background: none; border: 1px solid var(--border);
+    border-radius: var(--r-sm); cursor: pointer; padding: 7px 8px;
+    transition: border-color var(--transition);
+  }
+  .hamburger:hover { border-color: var(--gold); }
+  .hamburger span {
+    display: block; width: 18px; height: 1.5px;
+    background: var(--ink);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ── TABLET ── */
   @media (max-width: 960px) {
     nav { padding: 1rem 1.5rem; }
-    .nav-links { gap: 1.2rem; }
     section { padding: 4.5rem 1.5rem; }
     .hero { grid-template-columns: 1fr; }
     .hero-right { display: none; }
     .hero-text { padding: 4.5rem 1.5rem 3rem; }
     .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
-    .skills-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
     .project-grid { grid-template-columns: 1fr; }
     .project-card.wide { grid-column: span 1; }
     .awards-list { grid-template-columns: 1fr; }
     footer { flex-direction: column; gap: 1rem; text-align: center; }
     .edu-card { grid-template-columns: 1fr; }
+    .section-reveal { height: 22vh; min-height: 120px; }
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 680px) {
+    /* show hamburger, hide desktop links */
+    .hamburger { display: flex; }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%; left: 0; right: 0;
+      background: rgba(232,225,216,0.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      flex-direction: column;
+      padding: 0.5rem 0 1rem;
+      gap: 0;
+      box-shadow: 0 8px 24px rgba(43,43,43,0.10);
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { width: 100%; }
+    .nav-links li a {
+      display: block; padding: 0.85rem 2rem;
+      font-size: 0.78rem; letter-spacing: 0.12em;
+      border-bottom: 1px solid var(--border-mid);
+      color: var(--ink-mid);
+    }
+    .nav-links li:last-child a { border-bottom: none; }
+    .nav-links li a:hover { color: var(--ink); background: rgba(184,154,90,0.06); }
+
+    /* hero */
+    h1 { font-size: 2.6rem; }
+    .hero-text { padding: 4rem 1.2rem 2.5rem; }
+    .hero-tagline { font-size: 0.6rem; letter-spacing: 0.22em; }
+    .hero-bio { font-size: 0.88rem; }
+    .hero-contacts { gap: 0.5rem; }
+    .contact-chip { font-size: 0.68rem; padding: 0.32rem 0.7rem; }
+
+    /* sections */
+    section { padding: 3.5rem 1.2rem; }
+    .section-reveal { height: 18vh; min-height: 100px; max-height: 160px; }
+    .section-reveal-text { font-size: clamp(2rem, 10vw, 3.5rem); }
+
+    /* experience */
+    .exp-item { grid-template-columns: 1fr; gap: 0.4rem; padding: 1.8rem 0; }
+    .exp-date { font-size: 0.65rem; }
+    .exp-company { font-size: 0.8rem; }
+    .exp-role { font-size: 1.05rem; }
+    .exp-points li { font-size: 0.8rem; }
+
+    /* education */
+    .edu-card { grid-template-columns: 1fr; gap: 1rem; padding: 1.6rem; }
+    .edu-school { font-size: 1.1rem; }
+
+    /* skills */
+    .skills-grid { grid-template-columns: 1fr; }
+
+    /* projects */
+    .project-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+    .project-card { padding: 1.6rem; }
+    .project-card.wide { grid-column: span 1; }
+    .project-title { font-size: 0.95rem; }
+    .project-points li { font-size: 0.78rem; }
+
+    /* awards */
+    .awards-list { grid-template-columns: 1fr; }
+    .award-item { padding: 1.3rem 1.5rem; }
+
+    /* campus */
+    .campus-card { padding: 1.6rem; }
+
+    /* footer */
+    footer { flex-direction: column; gap: 0.8rem; text-align: center; padding: 2rem 1.5rem; }
+
+    /* sticky label — smaller on mobile */
+    .section-sticky-inner { padding: 0.22rem 0.65rem 0.22rem 0.45rem; }
+    .sticky-title { font-size: 0.68rem; }
   }
 
   /* ── CINEMATIC SECTION TITLES ── */
@@ -674,6 +774,33 @@
   #awards .sticky-title { color: rgba(232,225,216,0.9); }
   #awards .section-reveal-text { color: rgba(232,225,216,0.8); }
 
+
+  /* ── COMPANY LOGOS in experience ── */
+  .exp-logo-wrap {
+    display: inline-block;
+    margin-top: 0.9rem;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1),
+                box-shadow 0.25s ease;
+  }
+  .exp-logo-wrap:hover {
+    transform: scale(1.07) translateY(-2px);
+    box-shadow: 0 6px 20px rgba(43,43,43,0.13), 0 0 0 1px rgba(43,43,43,0.07);
+  }
+  .exp-logo {
+    display: block;
+    height: 44px; width: auto;
+    max-width: 150px;
+    object-fit: contain; object-position: left center;
+    border-radius: 5px;
+    opacity: 0.88;
+    filter: grayscale(10%);
+    transition: opacity 0.25s ease, filter 0.25s ease;
+  }
+  .exp-logo-wrap:hover .exp-logo { opacity: 1; filter: grayscale(0%); }
+
 </style>
 </head>
 <body>
@@ -702,19 +829,26 @@
 </div>
 <div id="main-content">
 
-<nav>
+<nav id="main-nav">
   <a href="#" class="nav-logo">K<em style="font-style:italic;font-family:'Playfair Display',serif">L</em></a>
-  <ul class="nav-links">
-    <li><a href="#experience" data-en>Experience</a><a href="#experience" data-cn>实习经历</a></li>
-    <li><a href="#education" data-en>Education</a><a href="#education" data-cn>教育背景</a></li>
-    <li><a href="#skills" data-en>Skills</a><a href="#skills" data-cn>技能证书</a></li>
-    <li><a href="#projects" data-en>Projects</a><a href="#projects" data-cn>项目经历</a></li>
-    <li><a href="#campus" data-en>Campus</a><a href="#campus" data-cn>在校经历</a></li>
-    <li><a href="#awards" data-en>Awards</a><a href="#awards" data-cn>荣誉奖项</a></li>
+  <!-- desktop links -->
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#experience" data-en onclick="closeNav()">Experience</a><a href="#experience" data-cn onclick="closeNav()">工作经历</a></li>
+    <li><a href="#education" data-en onclick="closeNav()">Education</a><a href="#education" data-cn onclick="closeNav()">教育背景</a></li>
+    <li><a href="#skills" data-en onclick="closeNav()">Skills</a><a href="#skills" data-cn onclick="closeNav()">技能证书</a></li>
+    <li><a href="#projects" data-en onclick="closeNav()">Projects</a><a href="#projects" data-cn onclick="closeNav()">项目经历</a></li>
+    <li><a href="#campus" data-en onclick="closeNav()">Campus</a><a href="#campus" data-cn onclick="closeNav()">在校经历</a></li>
+    <li><a href="#awards" data-en onclick="closeNav()">Awards</a><a href="#awards" data-cn onclick="closeNav()">荣誉奖项</a></li>
   </ul>
-  <div class="lang-toggle">
-    <button class="lang-btn active" onclick="setLang('en')">EN</button>
-    <button class="lang-btn" onclick="setLang('cn')">中文</button>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" id="btn-cn" onclick="setLang('cn')">中文</button>
+    </div>
+    <!-- hamburger button -->
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
@@ -775,7 +909,7 @@
 </section>
 
 <!-- EXPERIENCE -->
-<section id="experience">
+<section id="Internship Experience">
   <!-- cinematic reveal title -->
   <div class="section-reveal" data-section="experience">
     <span class="section-reveal-text" data-en>Internship Experience</span>
@@ -804,6 +938,7 @@
         <div class="exp-company" data-en>Meritco Services Consulting</div>
         <div class="exp-company" data-cn>久远谦长（上海）管理咨询有限公司</div>
         <div class="exp-location" data-en>Consulting</div>
+      <a class="exp-logo-wrap" href="https://www.meritco-group.com/" target="_blank" rel="noopener"><img class="exp-logo" src="data:image/jpeg;base64,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" alt="meritco logo"></a>
         <div class="exp-location" data-cn>咨询行业</div>
       </div>
       <div>
@@ -824,9 +959,10 @@
     <div class="exp-item">
       <div class="exp-meta">
         <div class="exp-date">2025.08 — 2025.11</div>
-        <div class="exp-company">HSBC Global Services</div>
-        <div class="exp-location" data-en>Finance / Retirement</div>
-        <div class="exp-location" data-cn>金融 / MPF </div>
+        <div class="exp-company">HSBC Global Services Center</div>
+        <div class="exp-location" data-en>Finance / Financial Operation</div>
+      <a class="exp-logo-wrap" href="https://www.hsbc.com.hk/zh-hk/international/" target="_blank" rel="noopener"><img class="exp-logo" src="data:image/jpeg;base64,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" alt="hsbc logo"></a>
+        <div class="exp-location" data-cn>金融 / 金融运营</div>
       </div>
       <div>
         <div class="badge" data-en>MPF Retirement Intern</div>
@@ -846,9 +982,10 @@
     <div class="exp-item">
       <div class="exp-meta">
         <div class="exp-date">2025.03 — 2025.05</div>
-        <div class="exp-company" data-en>Baker Tilly China</div>
+        <div class="exp-company" data-en>Baker Tilly China, CPA</div>
         <div class="exp-company" data-cn>天职国际会计师事务所</div>
         <div class="exp-location" data-en>Audit</div>
+      <a class="exp-logo-wrap" href="https://www.bakertilly.cn/" target="_blank" rel="noopener"><img class="exp-logo" src="data:image/jpeg;base64,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oAKKKKACiiigAooooAKKKKACiiigArl/iFp/irVdCFp4Q1Ww0PUppVSTUb+0a6EEJzvaOIMoaQcbd52+oPSuoooA8mh/Zs8Kf8K7vPCty+oXk17djVLnX5LnGqSaiCCt8JwPlmUqu0qAqhQoXbxVef4M+IfHfgRvC3xE8XT6rHa6jDdWuqeHwdLurqOErJF9p27gJBIoYmLYCUUgDkV7DRQO587fC/8AZcuPBPii2nv9UjvNBsNb1PxDa2bTT3E9xfXEjLBNcSzE7jDbsVAHWR2ckkA0/wAT/s4a7N4Wl8OaBq+mWuj2vjC18R6RbXkMpWxtw4lntsRspK+a0rIFK7Q4GRgV9DUUrBdnzLP+ybeXN39rlHhaW68n7N9okj1hpPK3Btm46jnbuAbHTIB6itPTv2b9bfwvDpOq6vZlz41bxJNNpj3NsRbGFowkblmkSUZB3bz0J3Zr6HoosF2fPcP7MjeDri203wb9it9Au9X07UdRm1S5mlu4IrKaOWK3t8AhlLLKxaRs75pGJbNeu+D/AAHZeC9R8S3NjLN5eu6k2qy20hBjhmaONJPL4yAxj3nOfmZj3rp6KYXuFFFFAgooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP//Z" alt="tianzhi logo"></a>
         <div class="exp-location" data-cn>审计</div>
       </div>
       <div>
@@ -870,6 +1007,7 @@
         <div class="exp-company" data-en>China Merchants Securities</div>
         <div class="exp-company" data-cn>招商证券</div>
         <div class="exp-location" data-en>Investment Banking</div>
+      <a class="exp-logo-wrap" href="https://www.cmschina.com/" target="_blank" rel="noopener"><img class="exp-logo" src="data:image/jpeg;base64,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" alt="cms logo"></a>
         <div class="exp-location" data-cn>投资银行</div>
       </div>
       <div>
@@ -890,9 +1028,10 @@
     <div class="exp-item">
       <div class="exp-meta">
         <div class="exp-date">2024.06 — 2024.08</div>
-        <div class="exp-company" data-en>Chengdu Ruikanglianzhong Pharmaceutical Co., Ltd.</div>
+        <div class="exp-company" data-en>Chengdu Ruikanglianzhong Pharmaceutical Co., Ltd</div>
         <div class="exp-company" data-cn>成都瑞康联众医药有限公司</div>
-        <div class="exp-location" data-en>Finance Department</div>
+        <div class="exp-location" data-en>Financial Department</div>
+      <span class="exp-logo-wrap" style="cursor:default;"><img class="exp-logo" src="data:image/jpeg;base64,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" alt="ruikang logo"></span>
         <div class="exp-location" data-cn>财务部门</div>
       </div>
       <div>
@@ -1156,7 +1295,7 @@
   <div class="campus-card">
     <div class="exp-date">2024.10 — 2025.06</div>
     <div style="font-size:0.85rem;font-weight:500;margin-bottom:0.2rem;" data-en>Hainan University · Fengxiang Academy</div>
-    <div style="font-size:0.85rem;font-weight:500;margin-bottom:0.8rem;" data-cn>海南大学 · 丰翔书院</div>
+    <div style="font-size:0.85rem;font-weight:500;margin-bottom:0.8rem;" data-cn>海南大学 · 凤翔书院</div>
     <div class="exp-role" data-en>Peer Mentor</div>
     <div class="exp-role" data-cn>朋辈导师</div>
     <ul class="exp-points">
@@ -1241,7 +1380,21 @@
 function setLang(lang) {
   document.body.classList.toggle('cn', lang === 'cn');
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-  document.querySelector('.lang-btn:' + (lang === 'en' ? 'first-child' : 'last-child')).classList.add('active');
+  var btnId = lang === 'en' ? 'btn-en' : 'btn-cn';
+  var btn = document.getElementById(btnId);
+  if (btn) btn.classList.add('active');
+}
+function toggleNav() {
+  var links = document.getElementById('nav-links');
+  var ham   = document.getElementById('hamburger');
+  links.classList.toggle('open');
+  ham.classList.toggle('open');
+}
+function closeNav() {
+  var links = document.getElementById('nav-links');
+  var ham   = document.getElementById('hamburger');
+  if (links) links.classList.remove('open');
+  if (ham)   ham.classList.remove('open');
 }
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
