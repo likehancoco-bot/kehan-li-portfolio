@@ -1089,23 +1089,23 @@
       <div class="hero-rule-line"></div>
       <div class="hero-rule-dot"></div>
     </div>
-    <p class="hero-tagline fade-up delay-1" data-en>F I N A N C E &nbsp;&nbsp; &amp; &nbsp;&nbsp; D A T A &nbsp; A N A L Y S I S &nbsp;&nbsp;·&nbsp;&nbsp; Class of 2026</p>
-    <p class="hero-tagline fade-up delay-1" data-cn>金 融 &nbsp;&nbsp;·&nbsp;&nbsp; 数 据 分 析 &nbsp;&nbsp;·&nbsp;&nbsp; 2 0 2 6 届</p>
+    <p class="hero-tagline fade-up delay-1" data-en>FINANCE INVESTMENT BANKING</p>
+    <p class="hero-tagline fade-up delay-1" data-cn>金融 · 投资银行</p>
     <h1 class="fade-up delay-1">
       <span data-en>Kehan <em>Li</em></span>
       <span data-cn>李 <em>科含</em></span>
     </h1>
     <p class="hero-bio fade-up delay-2" data-en>
-      Accounting student (ACCA) at Hainan University, incoming MSc at CUHK-Shenzhen. Experienced across investment banking, audit, and consulting. Passionate about data-driven decision making.
+      First-year Master of Accounting student (Accounting Analytics) at The Chinese University of Hong Kong, Shenzhen, currently in my first semester. Accounting graduate (ACCA track) of Hainan University, with internship experience in investment banking, audit, and consulting. Skilled in financial modeling and data analysis.
     </p>
     <p class="hero-bio fade-up delay-2" data-cn>
-      海南大学会计（ACCA方向）本科生，香港中文大学（深圳）会计学硕士研究生（2026届）。具备投行、审计及咨询实习经验，擅长财务建模与数据分析。
+      现为香港中文大学（深圳）会计学硕士研究生（会计分析方向），研一上学期在读。本科毕业于海南大学会计学（ACCA方向），具备投行、审计及咨询实习经验，擅长财务建模与数据分析。
     </p>
     <div class="hero-contacts fade-up delay-3">
       <a class="contact-chip" href="tel:15706591059">📱 157-0659-1059</a>
       <a class="contact-chip" href="mailto:li_khan1012@163.com">✉️ li_khan1012@163.com</a>
       <a class="contact-chip" href="https://linkedin.com/in/科含-李-6918073b4" target="_blank">💼 LinkedIn</a>
-      <span class="contact-chip">📍 <span data-en>Chengdu</span><span data-cn>成都</span></span>
+      <span class="contact-chip">📍 <span data-en>Shenzhen</span><span data-cn>深圳</span></span>
     </div>
     <a href="https://linkedin.com/in/科含-李-6918073b4" target="_blank" class="hero-cta fade-up delay-4">
       <span data-en>View LinkedIn Profile →</span>
@@ -1125,12 +1125,6 @@
         <button class="carousel-btn next" onclick="nextSlide()">&#8250;</button>
       </div>
       <div class="carousel-dots"><button class="carousel-dot active" onclick="goTo(0)"></button><button class="carousel-dot" onclick="goTo(1)"></button><button class="carousel-dot" onclick="goTo(2)"></button><button class="carousel-dot" onclick="goTo(3)"></button><button class="carousel-dot" onclick="goTo(4)"></button></div>
-    </div>
-      <div class="hero-stat-row">
-        <div class="stat-pill">
-          <span class="stat-pill-num">3.55</span>
-          <span class="stat-pill-label">GPA · TOP 10%</span>
-        </div>
     </div>
   </div>
     </div>
@@ -1163,7 +1157,7 @@
     <!-- Jiuyuan Qianzhang -->
     <div class="exp-item">
       <div class="exp-meta">
-        <div class="exp-date">2026.01 — Present</div>
+        <div class="exp-date">2026.01 — 2026.04</div>
         <div class="exp-company" data-en>Meritco Services</div>
         <div class="exp-company" data-cn>久远谦长（上海）管理咨询有限公司</div>
         <div class="exp-location" data-en>Consulting</div>
@@ -1313,8 +1307,8 @@
         <div class="edu-degree" data-cn>会计学硕士研究生（会计分析方向）· 预计2028年毕业</div>
         <div class="edu-stats">
           <div class="edu-stat">
-            <div class="edu-stat-val" data-en>Incoming</div>
-            <div class="edu-stat-val" data-cn>即将入读</div>
+            <div class="edu-stat-val" data-en>Year 1 · Semester 1</div>
+            <div class="edu-stat-val" data-cn>研一 · 上学期在读</div>
             <div class="edu-stat-key" data-en>Status</div>
             <div class="edu-stat-key" data-cn>状态</div>
           </div>
@@ -1403,6 +1397,7 @@
         <span class="skill-tag">SPSS Modeler</span>
         <span class="skill-tag">Matlab</span>
         <span class="skill-tag">Kingdee EAS</span>
+        <span class="skill-tag" data-en>Vibe Coding</span><span class="skill-tag" data-cn>Vibe Coding（AI 辅助编程）</span>
       </div>
     </div>
     <div class="skill-group">
@@ -1601,8 +1596,8 @@
 
 <footer>
   <div class="footer-name">Kehan Li · 李科含</div>
-  <div class="footer-note" data-en>li_khan1012@163.com · 157-0659-1059 · Chengdu</div>
-  <div class="footer-note" data-cn>li_khan1012@163.com · 157-0659-1059 · 成都</div>
+  <div class="footer-note" data-en>li_khan1012@163.com · 157-0659-1059 · Shenzhen</div>
+  <div class="footer-note" data-cn>li_khan1012@163.com · 157-0659-1059 · 深圳</div>
 </footer>
 
 <script>
@@ -1864,20 +1859,27 @@ function enterSite() {
 
 <script>
 // Photo carousel
-var _cur = 0, _total = 5;
+var _cur = 0, _total = 5, _returnTimer = null;
 function _slides() { return document.querySelectorAll('.carousel-slide'); }
 function _dots() { return document.querySelectorAll('.carousel-dot'); }
-function goTo(n) {
+function showSlide(n) {
   _slides()[_cur].classList.remove('active');
   _dots()[_cur].classList.remove('active');
   _cur = (n + _total) % _total;
   _slides()[_cur].classList.add('active');
   _dots()[_cur].classList.add('active');
 }
+function goTo(n) {
+  clearTimeout(_returnTimer);
+  showSlide(n);
+  _returnTimer = setTimeout(function() {
+    showSlide(0);
+    _returnTimer = null;
+  }, 5000);
+}
 function nextSlide() { goTo(_cur + 1); }
 function prevSlide() { goTo(_cur - 1); }
-// Auto-advance every 4s
-setInterval(function(){ if(document.getElementById('splash') === null) nextSlide(); }, 4000);
+// Stay on the first photo until manual navigation; return after 5 seconds of inactivity.
 </script>
 
 
